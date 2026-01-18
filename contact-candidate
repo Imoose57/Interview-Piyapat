@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Management Sheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sheet-table th, .sheet-table td {
+            border: 1px solid #e5e7eb;
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+        .sheet-table tr:hover {
+            background-color: #f9fafb;
+        }
+        .checkbox-cell {
+            text-align: center;
+            width: 40px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <!-- Header -->
+        <div class="bg-emerald-600 p-6 text-white flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold">Candidate Contact Manager</h1>
+                <p class="text-emerald-100 text-sm">จัดการสถานะการติดต่อผู้สมัคร (8 ท่าน)</p>
+            </div>
+            <button onclick="exportToCSV()" class="bg-white text-emerald-700 hover:bg-emerald-50 px-4 py-2 rounded-lg font-semibold transition flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export CSV
+            </button>
+        </div>
+
+        <!-- Sheet Table -->
+        <div class="overflow-x-auto">
+            <table class="w-full sheet-table border-collapse text-left" id="candidateTable">
+                <thead class="bg-gray-50 text-gray-600 font-medium">
+                    <tr>
+                        <th class="checkbox-cell">Done</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Creative</th>
+                        <th>Salary</th>
+                        <th>Ranking</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="p-4 bg-gray-50 border-t flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+            <div>* คุณสามารถคลิกที่ช่อง Status เพื่อพิมพ์บันทึกเพิ่มเติมได้</div>
+            <div id="statsCount">สถานะ: ทั้งหมด 8 รายชื่อ</div>
+        </div>
+    </div>
+
+    <script>
+        const candidates = [
+            { name: "Kanyaluck", phone: "093-582-5299", email: "juner.kanyaluck@gmail.com", creative: 4, salary: "35,000", ranking: "🥇 TOP" },
+            { name: "Piyaphat", phone: "081-797-9854", email: "thpiyaphat.22@gmail.com", creative: 5, salary: "40,000", ranking: "🥈" },
+            { name: "Pimnara", phone: "084-974-2953", email: "Pimnara.Punsawat@gmail.com", creative: 3, salary: "35,000", ranking: "🥉" },
+            { name: "Sarawadee", phone: "094-482-2163", email: "sarawadee.phon@gmail.com", creative: 1, salary: "30,000", ranking: "⬇️" },
+            { name: "Panadda", phone: "064-691-7878", email: "panaddaa.arg@gmail.com", creative: 2, salary: "28,000", ranking: "⬇️" },
+            { name: "Suwimol", phone: "092-408-7088", email: "bf-baifern@hotmail.com", creative: 2, salary: "-", ranking: "⬇️" },
+            { name: "Jantanee", phone: "088-641-5941", email: "Jantaneepantarose@gmail.com", creative: 3, salary: "-", ranking: "⬇️" },
+            { name: "Nattinan", phone: "092-246-5663", email: "iknattinan@gmail.com", creative: 2, salary: "-", ranking: "⬇️" }
+        ];
+
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = candidates.map((c, index) => `
+                <tr>
+                    <td class="checkbox-cell">
+                        <input type="checkbox" class="w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500">
+                    </td>
+                    <td class="font-medium text-gray-900">${c.name}</td>
+                    <td class="text-blue-600 underline">${c.phone}</td>
+                    <td class="text-gray-600">${c.email}</td>
+                    <td class="text-orange-500">${"⭐".repeat(c.creative)}</td>
+                    <td class="font-mono text-gray-700">${c.salary}</td>
+                    <td>${c.ranking}</td>
+                    <td contenteditable="true" class="bg-yellow-50 outline-none focus:bg-white focus:ring-2 focus:ring-emerald-200 transition-all italic text-gray-400">
+                        พิมพ์สถานะที่นี่...
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        function exportToCSV() {
+            const table = document.getElementById('candidateTable');
+            let csv = [];
+            const rows = table.querySelectorAll('tr');
+            
+            for (let i = 0; i < rows.length; i++) {
+                const row = [], cols = rows[i].querySelectorAll('td, th');
+                for (let j = 1; j < cols.length; j++) { // Skip checkbox column
+                    let data = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, "").replace(/(\s\s)/gm, " ");
+                    data = data.replace(/"/g, '""');
+                    row.push('"' + data + '"');
+                }
+                csv.push(row.join(","));
+            }
+            
+            const csvString = csv.join("\n");
+            const blob = new Blob(["\ufeff" + csvString], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "candidate_contact_status.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        window.onload = renderTable;
+    </script>
+</body>
+</html>
