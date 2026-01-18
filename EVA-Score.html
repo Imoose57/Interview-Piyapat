@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Interview Scorecard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        input[type=range] {
+            height: 6px;
+            -webkit-appearance: none;
+            width: 100%;
+            background: #e2e8f0;
+            border-radius: 8px;
+            outline: none;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #4f46e5;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 p-4 md:p-8 min-h-screen">
+
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="mb-10 text-center md:text-left">
+            <h1 class="text-3xl font-black text-slate-900 tracking-tight flex items-center justify-center md:justify-start gap-3">
+                <i data-lucide="layout-dashboard" class="text-indigo-600"></i>
+                Interview Scorecard Dashboard
+            </h1>
+            <p class="text-slate-500 font-medium mt-2">ระบบประเมินคะแนนผู้สมัครแบบ Real-time (Interactive Version)</p>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div id="candidate-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- JavaScript will render cards here -->
+        </div>
+
+        <!-- Summary Table -->
+        <div class="mt-12 bg-white rounded-[2rem] border border-slate-200 shadow-sm overflow-hidden p-8">
+            <h2 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <i data-lucide="bar-chart-3" class="text-indigo-600"></i>
+                ตารางเปรียบเทียบคะแนนสรุป
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="text-slate-400 text-[10px] uppercase tracking-widest border-b pb-4">
+                            <th class="pb-4">Candidate</th>
+                            <th class="pb-4 text-center">Total Score</th>
+                            <th class="pb-4">Progress Bar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="summary-table-body" class="divide-y divide-slate-100">
+                        <!-- Summary rows will be here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const candidates = [
+            { id: 'piyaphat', name: 'Piyaphat' },
+            { id: 'kanyaluck', name: 'Kanyaluck' },
+            { id: 'pimnara', name: 'Pimnara' }
+        ];
+
+        const criteria = [
+            { id: 'creative', label: 'Creative Thinking', weight: 0.30, icon: 'award' },
+            { id: 'experience', label: 'Experience Match', weight: 0.25, icon: 'clipboard-check' },
+            { id: 'culture', label: 'Cultural Fit', weight: 0.20, icon: 'users' },
+            { id: 'handsOn', label: 'Hands-On Ability', weight: 0.15, icon: 'trending-up' },
+            { id: 'salary', label: 'Salary Negotiation', weight: 0.10, icon: 'dollar-sign' }
+        ];
+
+        // Store scores: { candidateId: { criterionId: value } }
+        let scores = {};
+        candidates.forEach(c => {
+            scores[c.id] = {};
+            criteria.forEach(crit => scores[c.id][crit.id] = 0);
+        });
+
+        function updateScore(candidateId, criterionId, value) {
+            scores[candidateId][criterionId] = parseFloat(value);
+            renderDashboard();
+        }
+
+        function calculateTotal(candidateId) {
+            let total = 0;
+            criteria.forEach(crit => {
+                total += (scores[candidateId][crit.id] * crit.weight * 10);
+            });
+            return total.toFixed(1);
+        }
+
+        function renderDashboard() {
+            const grid = document.getElementById('candidate-grid');
+            const summaryBody = document.getElementById('summary-table-body');
+            grid.innerHTML = '';
+            summaryBody.innerHTML = '';
+
+            candidates.forEach(c => {
+                const total = calculateTotal(c.id);
+                
+                // Create Card
+                const card = document.createElement('div');
+                card.className = 'bg-white border border-slate-200 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden';
+                
+                let criteriaHtml = '';
+                criteria.forEach(crit => {
+                    const currentVal = scores[c.id][crit.id];
+                    criteriaHtml += `
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <label class="text-sm font-bold text-slate-700 flex items-center gap-2">
+                                    <i data-lucide="${crit.icon}" class="w-4 h-4 text-slate-400"></i>
+                                    ${crit.label}
+                                </label>
+                                <span class="text-indigo-600 font-mono font-bold">${currentVal}/10</span>
+                            </div>
+                            <input 
+                                type="range" 
+                                min="0" max="10" step="0.5" 
+                                value="${currentVal}"
+                                oninput="updateScore('${c.id}', '${crit.id}', this.value)"
+                            >
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="p-8 border-b border-slate-50 bg-slate-50/50">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-indigo-200">
+                                <i data-lucide="user" class="w-7 h-7"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-black text-slate-900">${c.name}</h3>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Job Applicant</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-center">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Current Weighted Score</p>
+                            <div class="text-5xl font-black text-indigo-600">${total}<span class="text-xl text-slate-300 ml-1">%</span></div>
+                        </div>
+                    </div>
+                    <div class="p-8 space-y-6">
+                        ${criteriaHtml}
+                    </div>
+                `;
+                grid.appendChild(card);
+
+                // Update Summary Table
+                const row = document.createElement('tr');
+                row.className = 'group hover:bg-slate-50 transition-colors';
+                row.innerHTML = `
+                    <td class="py-4 font-bold text-slate-700">${c.name}</td>
+                    <td class="py-4 text-center font-black text-indigo-600 text-lg">${total}%</td>
+                    <td class="py-4 w-1/2">
+                        <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                            <div class="bg-indigo-500 h-full transition-all duration-500" style="width: ${total}%"></div>
+                        </div>
+                    </td>
+                `;
+                summaryBody.appendChild(row);
+            });
+
+            lucide.createIcons();
+        }
+
+        // Initial Render
+        renderDashboard();
+    </script>
+</body>
+</html>
