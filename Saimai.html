@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คู่มือสัมภาษณ์ — Saimai Werapol</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Sarabun', Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #e91e63;
+            border-bottom: 5px solid #e91e63;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        
+        h2 {
+            color: #e91e63;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 600;
+            border-left: 6px solid #e91e63;
+            padding-left: 20px;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #fce4ec;
+            transition: all 0.3s;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 6px solid #2196f3;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 6px solid #ffc107;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .success-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 6px solid #4caf50;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .danger-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 6px solid #f44336;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .code-box {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #fff9c4 0%, #ffeb3b 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border: 3px solid #f9a825;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+        
+        li {
+            margin: 12px 0;
+            line-height: 1.6;
+        }
+        
+        .checkbox {
+            margin: 15px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .score-table {
+            background: linear-gradient(135deg, #f5f5f5 0%, #eeeeee 100%);
+            padding: 30px;
+            border-radius: 10px;
+            margin: 25px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        p {
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+        
+        strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 3px solid #e0e0e0;
+            color: #7f8c8d;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 30px;
+            }
+        }
+        
+        @page {
+            margin: 2cm;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📄 คู่มือสัมภาษณ์ — Saimai Werapol</h1>
+        
+        <div class="highlight-box">
+            <h2 style="color: #f9a825; border: none; margin: 0; font-size: 24px;">
+                🎯 E-COMMERCE SPECIALIST — YOUNG & MOLDABLE
+            </h2>
+            <p style="margin-top: 10px; font-size: 16px;">
+                <strong>Senior E-commerce Marketing — Execution-Ready แต่ไม่มี F&B Experience</strong>
+            </p>
+        </div>
+        
+        <h2>👤 ข้อมูลผู้สมัคร</h2>
+        <table>
+            <tr>
+                <th style="width: 40%;">รายการ</th>
+                <th>รายละเอียด</th>
+            </tr>
+            <tr>
+                <td><strong>ชื่อ-นามสกุล</strong></td>
+                <td>Saimai Werapol</td>
+            </tr>
+            <tr>
+                <td><strong>เบอร์โทรศัพท์</strong></td>
+                <td>065-502-9542</td>
+            </tr>
+            <tr>
+                <td><strong>อีเมล</strong></td>
+                <td>saimai2001@hotmail.co.th</td>
+            </tr>
+            <tr>
+                <td><strong>ตำแหน่งปัจจุบัน</strong></td>
+                <td>Senior E-commerce Marketing (Karmakamet)</td>
+            </tr>
+            <tr>
+                <td><strong>อายุ</strong></td>
+                <td>23 ปี (Born 2001)</td>
+            </tr>
+            <tr>
+                <td><strong>เงินเดือนที่ขอ</strong></td>
+                <td><strong style="color: #e91e63;">฿35,000/เดือน</strong></td>
+            </tr>
+            <tr>
+                <td><strong>คะแนน Creative</strong></td>
+                <td><strong style="color: #f39c12;">⭐⭐⭐ (3/5)</strong></td>
+            </tr>
+            <tr>
+                <td><strong>ประสบการณ์</strong></td>
+                <td>1.5 ปี (2023-2025)</td>
+            </tr>
+            <tr>
+                <td><strong>ระดับความเสี่ยง</strong></td>
+                <td><strong style="color: #f39c12;">🟡 ปานกลาง (YOUNG + NO F&B)</strong></td>
+            </tr>
+        </table>
+
+        <h2>✅ จุดแข็งสำคัญ</h2>
+        <div class="success-box">
+            <ol>
+                <li><strong>E-commerce Specialist</strong> — Shopee, Lazada, Line Shopping, TikTok</li>
+                <li><strong>Management Trainee (T.A.C. Consumer)</strong> — หมุนทุก department (Marketing, Product Dev, Online/Offline)</li>
+                <li><strong>Multi-platform Campaign Execution</strong> — Digital content, KOLs, budget management</li>
+                <li><strong>Hospitality Background</strong> — Srinakharinwirot University (Hospitality & Tourism Management)</li>
+                <li><strong>JW Marriott Internship</strong> — เข้าใจ hospitality service standards</li>
+                <li><strong>Young & Energetic</strong> — 23 years old, eager to learn, moldable</li>
+                <li><strong>Creative Skills</strong> — Keynote, Video editing, Procreate, Microsoft Programs</li>
+                <li><strong>Currently Employed</strong> — Stable, not desperate</li>
+            </ol>
+        </div>
+
+        <h2>⚠️ ข้อควรพิจารณา</h2>
+        <div class="warning-box">
+            <table style="margin: 0;">
+                <tr>
+                    <th>ปัจจัยเสี่ยง</th>
+                    <th>รายละเอียด</th>
+                    <th>ผลกระทบ</th>
+                </tr>
+                <tr>
+                    <td><strong>ไม่มี F&B Marketing</strong></td>
+                    <td>Background เป็น beauty/lifestyle (T.A.C., Karmakamet)</td>
+                    <td>ต้อง onboard เรื่อง F&B marketing และ craft beer</td>
+                </tr>
+                <tr>
+                    <td><strong>Creative ต่ำ (3/5)</strong></td>
+                    <td>เน้น e-commerce/performance marketing</td>
+                    <td>อาจจะขาด brand storytelling</td>
+                </tr>
+                <tr>
+                    <td><strong>ประสบการณ์น้อย</strong></td>
+                    <td>1.5 ปีเท่านั้น (2023-2025)</td>
+                    <td>ต้อง train มากกว่าคนที่มีประสบการณ์ 3-5 ปี</td>
+                </tr>
+                <tr>
+                    <td><strong>อายุน้อย</strong></td>
+                    <td>23 years old</td>
+                    <td>อาจจะยัง immature ในบางเรื่อง</td>
+                </tr>
+                <tr>
+                    <td><strong>English: TOEIC 555</strong></td>
+                    <td>พอใช้ได้แต่ไม่สูง</td>
+                    <td>ถ้าต้องทำ content English อาจจะต้องช่วย</td>
+                </tr>
+                <tr>
+                    <td><strong>เงินเดือน ฿35K</strong></td>
+                    <td>เกินงบ ฿7-12K (25-43%)</td>
+                    <td>ต้องต่อรองหรือหางบเพิ่ม</td>
+                </tr>
+            </table>
+        </div>
+
+        <h2>🎯 คำถามสำคัญที่ต้องถามทุกข้อ</h2>
+
+        <h3>❓ Q1: Beauty/Lifestyle → Craft Brewery — ทำไมถึงอยากเปลี่ยน?</h3>
+        <div class="info-box">
+            <p><strong>คำถาม:</strong></p>
+            <p>"คุณทำงานที่ Karmakamet (beauty/lifestyle) และ T.A.C. Consumer (cosmetics)<br>
+            ทำไมถึงอยากเปลี่ยนมาทำ F&B marketing?<br>
+            คุณมีความรู้หรือ passion เรื่อง F&B/craft beer ไหม?"</p>
+        </div>
+        
+        <div class="success-box">
+            <p><strong>✅ คำตอบที่ดี (GOOD SIGNS):</strong></p>
+            <ul>
+                <li>"จบ Hospitality & Tourism Management + เคยฝึกงานที่ JW Marriott"</li>
+                <li>"อยากกลับมาทำงานในสายงานที่เรียนมา"</li>
+                <li>"สนใจ craft beer culture และ F&B experience"</li>
+                <li>"อยากเห็น tangible product มากกว่า beauty/lifestyle"</li>
+                <li>"Skills ที่มี (e-commerce, digital, KOL) transferable ได้"</li>
+            </ul>
+        </div>
+
+        <div class="danger-box">
+            <p><strong>❌ คำตอบที่แย่ (RED FLAGS):</strong></p>
+            <ul>
+                <li>"แค่เบื่องาน beauty"</li>
+                <li>"แค่อยากเปลี่ยนสายงาน"</li>
+                <li>"ไม่มี passion for F&B"</li>
+                <li>"ไม่เคยดื่ม craft beer / ไม่สนใจ"</li>
+            </ul>
+        </div>
+
+        <h3>❓ Q2: E-commerce vs. Brand Marketing — ถนัดอะไรมากกว่า?</h3>
+        <div class="info-box">
+            <p><strong>คำถาม:</strong></p>
+            <p>"Resume คุณแสดงให้เห็นว่าคุณเก่ง e-commerce (Shopee, Lazada, performance marketing)<br>
+            แต่ craft brewery ต้องการทั้ง brand storytelling และ community building<br>
+            คุณมีประสบการณ์สร้าง brand content หรือ storytelling campaign บ้างไหม?"</p>
+        </div>
+
+        <div class="success-box">
+            <p><strong>✅ คำตอบที่ดี:</strong></p>
+            <ul>
+                <li>"ทำได้ทั้ง performance และ brand marketing"</li>
+                <li>"เคยทำ brand campaigns ที่ Karmakamet / T.A.C."</li>
+                <li>"มี creative skills (video editing, Procreate) สำหรับ content creation"</li>
+                <li>"พร้อมเรียนรู้ craft beer storytelling"</li>
+            </ul>
+        </div>
+
+        <div class="danger-box">
+            <p><strong>❌ Red Flags:</strong></p>
+            <ul>
+                <li>"ทำแต่ performance/sales-driven marketing อย่างเดียว"</li>
+                <li>"ไม่เคยทำ brand storytelling"</li>
+                <li>"ไม่สนใจ creative content"</li>
+            </ul>
+        </div>
+
+        <h3>❓ Q3: Hands-On Execution — ทำเองได้แค่ไหน?</h3>
+        <div class="info-box">
+            <p><strong>คำถาม:</strong></p>
+            <p>"12 Plato เป็น SME ที่ lean มาก — ไม่มี designer ประจำ ไม่มี agency รองรับ<br>
+            คุณสามารถทำ content creation เอง (ถ่ายรูป, edit video, เขียน caption) ได้ไหม?<br>
+            ถ้าต้องทำ social media post ทุกวัน คุณจัดการได้ไหม?"</p>
+        </div>
+
+        <div class="success-box">
+            <p><strong>✅ สิ่งที่ต้องฟัง:</strong></p>
+            <ul>
+                <li>"ได้ครับ ผมใช้ Canva / Keynote / Procreate / Video editing"</li>
+                <li>"เคยถ่ายรูป product ด้วยมือถือและ edit เอง"</li>
+                <li>"ชอบลงมือเอง ไม่กลัวงาน hands-on"</li>
+                <li>"เคยทำ content calendar และ execute เอง"</li>
+            </ul>
+        </div>
+
+        <h3>❓ Q4: KOL Management & Campaign</h3>
+        <div class="info-box">
+            <p><strong>คำถาม:</strong></p>
+            <p>"คุณมีประสบการณ์ KOL management<br>
+            ถ้า 12 Plato มี budget ฿20,000/เดือนสำหรับ KOL<br>
+            คุณจะเลือก KOL แบบไหน? Micro vs. Macro?<br>
+            คุณจะ brief KOL ยังไงให้ได้ content ที่ authentic สำหรับ craft beer?"</p>
+        </div>
+
+        <div class="success-box">
+            <p><strong>✅ สิ่งที่ต้องฟัง:</strong></p>
+            <ul>
+                <li>เข้าใจ micro-influencer strategy (ROI ดีกว่า macro)</li>
+                <li>รู้จัก brief ที่ไม่ scripted เกินไป</li>
+                <li>มี network KOL อยู่แล้ว (bonus!)</li>
+                <li>บอก approach สำหรับ craft beer ได้</li>
+            </ul>
+        </div>
+
+        <h3>❓ Q5: Craft Beer Knowledge</h3>
+        <div class="info-box">
+            <p><strong>คำถาม:</strong></p>
+            <p>"คุณดื่ม craft beer ไหม? รู้จัก craft brewery ในไทยไหม?<br>
+            คุณเห็นอนาคตของ craft beer market ในไทยยังไง?<br>
+            ถ้าให้ทำ 'Beer & Food Pairing' campaign คุณจะเริ่มยังไง?"</p>
+        </div>
+
+        <div class="success-box">
+            <p><strong>✅ คำตอบที่ดี:</strong></p>
+            <ul>
+                <li>"สนใจ craft beer และพร้อมเรียนรู้"</li>
+                <li>"เคยไป craft brewery บ้าง"</li>
+                <li>"จบ Hospitality จึงเข้าใจ food & beverage pairing"</li>
+                <li>บอก concept campaign ได้แม้ไม่รู้ลึก</li>
+            </ul>
+        </div>
+
+        <h3>❓ Q6: Notice Period & Salary</h3>
+        <div class="info-box">
+            <p><strong>คำถาม:</strong></p>
+            <p>"คุณทำงานที่ Karmakamet อยู่ตอนนี้<br>
+            Notice period เท่าไร? เริ่มงานได้เมื่อไร?<br>
+            เงินเดือน ฿35,000 ยืดหยุ่นได้ไหม?"</p>
+        </div>
+
+        <h2>💰 กลยุทธ์การเจรจาเงินเดือน</h2>
+
+        <div class="warning-box">
+            <h3>📌 สถานการณ์ปัจจุบัน:</h3>
+            <ul>
+                <li><strong>งบของเรา:</strong> ฿23,000 - 28,000 (base salary)</li>
+                <li><strong>เธอขอ:</strong> ฿35,000</li>
+                <li><strong>ส่วนต่าง:</strong> เกินงบ ฿7,000 - 12,000 (25% - 43%)</li>
+            </ul>
+        </div>
+
+        <h3>🎯 ตัวเลือกที่ 1: NEGOTIATE ฿30-32K + BONUS</h3>
+        <div class="code-box">💵 ข้อเสนอ:
+- Base Salary: ฿30,000 - 32,000
+- Performance Bonus: ฿2,000 - 3,000/เดือน
+- รวมทั้งหมด: ฿32,000 - 35,000/เดือน
+
+📝 สคริปต์การเจรจา:
+"เราประทับใจ e-commerce experience และ hospitality background ของคุณมากจริงๆ
+มี JW Marriott internship แสดงว่าเข้าใจ service standards
+
+เนื่องจากเราเป็น craft brewery SME ที่มีงบจำกัด
+และคุณยังไม่มี F&B marketing experience
+เราอยากเสนอ ฿30,000 - 32,000 base 
++ performance bonus ฿2,000 - 3,000/เดือน
+
+รวมแล้วคุณจะได้ประมาณ ฿32,000 - 35,000
+ใกล้เคียงกับ ฿35,000 ที่คุณขอ
+
+ข้อดีคือคุณจะได้:
+✓ เรียนรู้ F&B marketing แบบเจาะลึก
+✓ Own entire digital strategy
+✓ ทำงานกับ craft beer brand (cool & growing market)
+✓ Young age = room to grow → Marketing Manager ใน 2-3 ปี
+✓ Flexible hours + craft brewery culture
+
+คุณสนใจไหม?"</div>
+
+        <h3>🎯 ตัวเลือกที่ 2: ปฏิเสธถ้าไม่ยืดหยุ่น</h3>
+        <div class="code-box">ถ้าเธอยืนยัน ฿35,000 minimum และงบไม่พอ:
+
+📝 สคริปต์:
+"ขอบคุณสำหรับเวลาที่มาสัมภาษณ์นะคะ
+เราชื่นชม e-commerce skills และ hospitality background ของคุณมากจริงๆ
+
+แต่ขณะนี้งบของเราสำหรับตำแหน่งนี้คือ ฿30,000 - 32,000
+ซึ่งเราไม่สามารถไปถึง ฿35,000 ได้ในตอนนี้
+
+เราหวังว่าคุณจะเจองานที่เหมาะสมและให้เงินเดือนตามที่คาดหวัง
+ขอให้โชคดีนะคะ!"
+
+🔄 จากนั้นพิจารณา:
+→ Kanyaluck (฿35K แต่มี F&B proven, 5 years experience)
+→ Pimnara (฿35K, 3 years experience, data-driven)</div>
+
+        <h2>📊 ตารางให้คะแนน</h2>
+        <div class="score-table">
+            <table>
+                <tr>
+                    <th style="width: 35%;">เกณฑ์การประเมิน</th>
+                    <th style="width: 15%;">น้ำหนัก</th>
+                    <th style="width: 20%;">คะแนน (1-10)</th>
+                    <th style="width: 30%;">คะแนนถ่วงน้ำหนัก</th>
+                </tr>
+                <tr>
+                    <td><strong>ความคิดสร้างสรรค์</strong></td>
+                    <td>30%</td>
+                    <td>___/10</td>
+                    <td>___ × 0.30 = ___</td>
+                </tr>
+                <tr>
+                    <td><strong>ประสบการณ์ตรงตำแหน่ง</strong></td>
+                    <td>25%</td>
+                    <td>___/10</td>
+                    <td>___ × 0.25 = ___</td>
+                </tr>
+                <tr>
+                    <td><strong>เข้ากับวัฒนธรรมองค์กร</strong></td>
+                    <td>20%</td>
+                    <td>___/10</td>
+                    <td>___ × 0.20 = ___</td>
+                </tr>
+                <tr>
+                    <td><strong>การเจรจาเงินเดือน</strong></td>
+                    <td>15%</td>
+                    <td>___/10</td>
+                    <td>___ × 0.15 = ___</td>
+                </tr>
+                <tr>
+                    <td><strong>Potential & Growth Mindset</strong></td>
+                    <td>10%</td>
+                    <td>___/10</td>
+                    <td>___ × 0.10 = ___</td>
+                </tr>
+                <tr style="background: #f8f9fa;">
+                    <th colspan="3" style="text-align: right; background: #e0e0e0;"><strong>คะแนนรวม</strong></th>
+                    <th style="background: #e0e0e0;"><strong>___/100</strong></th>
+                </tr>
+            </table>
+        </div>
+
+        <h2>🎯 คำแนะนำสุดท้าย</h2>
+        
+        <div class="success-box">
+            <h3>✅ ถ้าคะแนน ≥ 75/100 + ยืดหยุ่นเรื่องเงินเดือน:</h3>
+            <p>→ <strong>จ้าง</strong> ที่ ฿30,000 - 32,000 + performance bonus</p>
+        </div>
+
+        <div class="warning-box">
+            <h3>⚠️ ถ้าคะแนน 65-74/100:</h3>
+            <p>→ <strong>พิจารณา</strong> — เปรียบเทียบกับ Pimnara (data-driven, 3 years exp) ก่อนตัดสินใจ</p>
+        </div>
+
+        <div class="danger-box">
+            <h3>❌ ถ้าคะแนน < 65/100 หรือไม่ยอมต่อรองเงินเดือน:</h3>
+            <p>→ <strong>ปฏิเสธ</strong> — เลือก Kanyaluck (F&B proven) หรือ Pimnara (more experience) แทน</p>
+        </div>
+
+        <h2>💡 สรุปสำคัญ</h2>
+        <div class="highlight-box">
+            <h3 style="color: #f9a825; margin-top: 0;">🎯 Saimai = YOUNG POTENTIAL แต่ต้อง TRAIN</h3>
+            
+            <p style="margin-top: 15px;"><strong style="font-size: 18px;">ทำไมถึงน่าสนใจ:</strong></p>
+            <ul style="margin-top: 10px;">
+                <li>✅ <strong>E-commerce Specialist</strong> — Execution-ready</li>
+                <li>✅ <strong>Hospitality Background</strong> — JW Marriott internship</li>
+                <li>✅ <strong>Young & Moldable</strong> — 23 years old, eager to learn</li>
+                <li>✅ <strong>Creative Skills</strong> — Video editing, design tools</li>
+                <li>❌ <strong>ไม่มี F&B Marketing Experience</strong></li>
+                <li>⚠️ <strong>Creative 3/5</strong> — Performance marketing มากกว่า brand storytelling</li>
+            </ul>
+
+            <h3 style="margin-top: 25px; color: #f9a825;">⚖️ เมื่อไหร่ควรเลือก Saimai:</h3>
+            <ul style="margin-top: 10px;">
+                <li><strong>ถ้าต้องการ e-commerce specialist</strong> มากกว่า brand storyteller</li>
+                <li><strong>ถ้า Kanyaluck ปฏิเสธ</strong> หรือขอเงินเดือนสูงเกินไป</li>
+                <li><strong>ถ้าต้องการคนอายุน้อย</strong> ที่ moldable และ eager to learn</li>
+                <li><strong>ถ้า Saimai แสดง passion for F&B</strong> และยืดหยุ่นเรื่องเงินเดือน</li>
+            </ul>
+
+            <h3 style="margin-top: 25px; color: #e74c3c;">⚠️ Trade-offs:</h3>
+            <table style="margin-top: 15px;">
+                <tr>
+                    <th>เกณฑ์</th>
+                    <th>Saimai</th>
+                    <th>Kanyaluck</th>
+                    <th>Santamon</th>
+                </tr>
+                <tr>
+                    <td><strong>Creative</strong></td>
+                    <td style="color: #e74c3c;">⭐⭐⭐ (3/5)</td>
+                    <td>⭐⭐⭐⭐ (4/5)</td>
+                    <td>⭐⭐⭐⭐ (4/5)</td>
+                </tr>
+                <tr>
+                    <td><strong>ประสบการณ์</strong></td>
+                    <td style="color: #e74c3c;">1.5 ปี (น้อยสุด)</td>
+                    <td style="color: #27ae60;">5+ ปี (มากสุด)</td>
+                    <td>3+ ปี</td>
+                </tr>
+                <tr>
+                    <td><strong>F&B Exp</strong></td>
+                    <td style="color: #e74c3c;">❌ ไม่มี</td>
+                    <td style="color: #27ae60;">✅ Proven</td>
+                    <td style="color: #27ae60;">✅ Proven</td>
+                </tr>
+                <tr>
+                    <td><strong>เงินเดือน</strong></td>
+                    <td>฿35K (ต่อรองได้)</td>
+                    <td>฿35K</td>
+                    <td style="color: #e74c3c;">฿45K (แพงสุด)</td>
+                </tr>
+                <tr>
+                    <td><strong>ความเสี่ยง</strong></td>
+                    <td style="color: #f39c12;">🟡 ปานกลาง</td>
+                    <td style="color: #27ae60;">🟢 ต่ำ</td>
+                    <td style="color: #f39c12;">🟡 ปานกลาง-สูง</td>
+                </tr>
+                <tr style="background: #f0f0f0;">
+                    <td><strong>Best For</strong></td>
+                    <td>E-commerce/Performance</td>
+                    <td style="color: #27ae60;"><strong>Best Balance</strong></td>
+                    <td>Full F&B Marketing</td>
+                </tr>
+            </table>
+
+            <h3 style="margin-top: 25px; color: #e91e63;">✅ คำแนะนำสุดท้าย:</h3>
+            <p style="margin-top: 10px; font-size: 16px; line-height: 1.8;">
+                <strong>เลือก Saimai ถ้า:</strong><br>
+                ✓ Kanyaluck ไม่ได้<br>
+                ✓ ต้องการ e-commerce specialist<br>
+                ✓ งบประมาณจำกัด ฿30-32K<br>
+                ✓ พร้อม train คนอายุน้อยที่มี potential<br>
+                <br>
+                <strong>ไม่เลือก Saimai ถ้า:</strong><br>
+                ✗ ต้องการ F&B experience แท้ๆ<br>
+                ✗ ต้องการ brand storytelling สูง<br>
+                ✗ ไม่มีเวลา train คนใหม่
+            </p>
+        </div>
+
+        <div class="footer">
+            <h2 style="color: #e91e63; border: none; margin-top: 0;">จบคู่มือสัมภาษณ์ — Saimai Werapol</h2>
+            <p style="margin-top: 15px; font-size: 14px;">12 Plato Brewing | Marketing Executive Interview Guide</p>
+            <p style="margin-top: 5px; font-size: 12px; color: #95a5a6;">สร้างโดย HR Team | วันที่พิมพ์: <span id="printDate"></span></p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('printDate').textContent = new Date().toLocaleDateString('th-TH', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    </script>
+</body>
+</html>
